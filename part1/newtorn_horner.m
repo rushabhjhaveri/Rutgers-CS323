@@ -56,7 +56,7 @@ for j = 1:N
     c = a_i(coelen);
     i = coelen;
     while i > 2
-        i = i-1
+        i = i-1;
         b = a_i(i) + b * approx_root; 
         c = b + c * approx_root;
     end 
