@@ -49,6 +49,8 @@ output = 0;
 
 coelen = length(a_i);
 
+flag = 0;
+
 for j = 1:N
     b = a_i(coelen);
     c = a_i(coelen);
@@ -66,12 +68,15 @@ for j = 1:N
     
     if abs(approx_root - old_approx) < epsilon;
         output = approx_root;
-        fprintf('Root: %f\n', output);
-        % exit;
+        flag =1;
     end
 end
 
-fprintf('Unable to find root.\n');
+if flag == 1
+    fprintf('Root: %f\n', output);
+else
+    fprintf('Unable to find root.\n');
+end
 
 
 
