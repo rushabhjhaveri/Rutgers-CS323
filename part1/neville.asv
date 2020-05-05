@@ -1,3 +1,4 @@
+function neville(file)
 % Open the file for reading, and obtain the file identifier, fileID.
 fileID = fopen('neville_input.txt','r');
 
@@ -47,8 +48,21 @@ polynomial_degree = length(x)-1;
 
 p = zeros(polynomial_degree+1, polynomial_degree+1);
 
+for i = 1:length(x)
+    p(i,i)=y(i);
+end
 
+for j = 1:(polynomial_degree+1)
+    for i = 1:(polynomial_degree+1-j)
+        p(i,i+j) = ((x(i+j)-x0)*p(i,i+j-1) + (x0-x(i))*p(i+1,i+j))/(x(i+j)-x(i));
+    end
+end
 
+p = p(1, polynomial_degree+1);
+
+fprintf('p: %f\n', p);
+
+end
 
 
 

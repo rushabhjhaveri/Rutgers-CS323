@@ -1,5 +1,6 @@
+function neville(file)
 % Open the file for reading, and obtain the file identifier, fileID.
-fileID = fopen('neville_input.txt','r');
+fileID = fopen(file,'r');
 
 % Define the format of the data to read. Use '%f' to specify floating-point numbers.
 formatspec = '%f';
@@ -7,11 +8,12 @@ formatspec = '%f';
 % Read the file data, filling output array A in column order. 
 A = fscanf(fileID, formatspec);
 
+% Close the file once done reading. 
 fclose(fileID);
 
 % DEBUG: see if A populated correctly. 
 % A = A';
-disp(A);
+% disp(A);
 
 len = length(A);
 
@@ -19,9 +21,9 @@ n = A(1);
 
 x0 = A(len);
 
-fprintf('n: %d\n', n); 
+% fprintf('n: %d\n', n); 
 
-fprintf('x0: %f\n', x0); 
+% fprintf('x0: %f\n', x0); 
 
 x = zeros();
 y = zeros();
@@ -40,8 +42,8 @@ for i = 2:(len-1)
     end
 end
 
-disp(x);
-disp(y);
+% disp(x);
+% disp(y);
 
 polynomial_degree = length(x)-1;
 
@@ -59,8 +61,9 @@ end
 
 p = p(1, polynomial_degree+1);
 
-fprintf('p: %f\n', p);
+fprintf('P(%f) = %f\n', x0, p);
 
+end
 
 
 
